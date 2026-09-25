@@ -1,0 +1,399 @@
+
+/* ---------------------------------------------------------
+   Tokens — a sketchbook-and-ink palette. Each niche below
+   carries its own accent color, reused across its filter
+   tab, its tag pill, and the top edge of its project cards.
+   --------------------------------------------------------- */
+.projects-page {
+
+  --accent-sketching: #45a000;
+  --accent-designing: #ff501b;
+  --accent-web: #007e77;
+  --accent-video-editing: #7626ff;
+
+  --font-display: 'Playfair Display', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
+
+  background-color: var(--Secondary-color);
+  color: var(--Primary-color);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  padding: 2.5rem clamp(1.25rem, 5vw, 4rem) 4rem;
+  box-sizing: border-box;
+}
+
+.projects-page *,
+.projects-page *::before,
+.projects-page *::after {
+  box-sizing: border-box;
+}
+
+/* ---------------------------------------------------------
+   Header — heading pinned top-left, back button top-right.
+   --------------------------------------------------------- */
+.projects-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 2px solid var(--Primary-color);
+  margin-bottom: 2rem;
+}
+
+.projects-heading-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.projects-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-graphic-design);
+}
+
+.projects-heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 7rem;
+  line-height: 1;
+  letter-spacing: -0.2rem;
+  margin: 0;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  align-self: end;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  padding: 0.5rem 1.15rem;
+  margin-top: 0.4rem;
+  background: transparent;
+  border: 1.5px solid var(--Primary-color);
+  border-radius: 0;
+  color: var(--Primary-color);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: none;
+  transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.back-button:hover {
+  background-color: var(--Primary-color);
+  color: var(--Secondary-color);
+  transform: translateX(-2px);
+}
+
+.back-button:focus-visible {
+  outline: 3px solid var(--accent-software);
+  outline-offset: 2px;
+}
+
+.back-button-arrow {
+  font-size: 1.05rem;
+  transition: transform 0.18s ease;
+}
+
+.back-button:hover .back-button-arrow {
+  transform: translateX(-3px);
+}
+
+/* ---------------------------------------------------------
+   Toolbar — niche filter tabs + sort indicator.
+   --------------------------------------------------------- */
+.projects-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.niche-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.niche-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--Secondary-color);
+  border: 1.5px solid var(--Primary-color);
+  border-radius: 0;
+  color: var(--ink-soft);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.88rem;
+  cursor: none;
+  transition: border-color 0.18s ease, color 0.18s ease, background-color 0.18s ease;
+}
+
+.niche-tab-icon {
+  cursor: none;
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+/* .niche-tab:hover {
+  border-color: var(--ink-faint);
+  color: var(--ink);
+} */
+
+.niche-tab:focus-visible {
+  cursor: none;
+  outline: 3px solid var(--accent-software);
+  outline-offset: 2px;
+}
+
+.niche-tab.is-active {
+  color: var(--Secondary-color);
+  background-color: var(--Primary-color);
+  border-color: var(--ink);
+}
+
+/* Active-state tint: each niche tab borrows its own accent when selected.
+.niche-tab--sketching.is-active { background-color: var(--accent-sketching); border-color: var(--accent-sketching); }
+.niche-tab--graphic-design.is-active { background-color: var(--accent-graphic-design); border-color: var(--accent-graphic-design); }
+.niche-tab--web.is-active { background-color: var(--accent-web); border-color: var(--accent-web); }
+.niche-tab--video-editing.is-active { background-color: var(--accent-video-editing); border-color: var(--accent-video-editing); } */
+
+.sort-note {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ink-faint);
+  letter-spacing: 0.02em;
+}
+
+/* ---------------------------------------------------------
+   Grid + cards
+   --------------------------------------------------------- */
+.projects-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  position: relative;
+  background-color: var(--Primary-color);
+  height: 25rem;
+  border: 1.5px solid var(--line);
+  border-radius: 0px;
+  overflow: hidden;
+  transition: all 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.project-card.active {
+  scale: 1.005;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 20px 5px;
+  transition: all 0.2s ease;
+}
+
+.project-card:hover {
+   border: 1px solid var(--Primary-color);
+  .live-link-btn{
+    scale: 1;
+    transition: all 0.2s ease;   
+  }
+  .project-body{
+    transform: translateY(0);
+    transition: all 0.2s ease;
+  }
+
+}
+
+/* Each niche stamps its accent on the card's top edge and thumbnail. */
+/* .project-card--sketching { border-top-color: var(--accent-sketching); }
+.project-card--graphic-design { border-top-color: var(--accent-graphic-design); }
+.project-card--software { border-top-color: var(--accent-software); }
+.project-card--video-editing { border-top-color: var(--accent-video-editing); } */
+
+ .project-thumb{
+  width: 100%;
+  height: 100%;
+ }
+ 
+ .project-thumb img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  }
+
+.live-link{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  z-index: 1;
+}
+.live-link-btn{
+  scale: 0;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2.5rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--Primary-color);
+  z-index: 1;
+  a{
+    position: inherit;
+    left: 25%;
+    top: 20%;
+  }
+  svg{
+        scale: 1.3rem;
+        stroke-width: 2px;
+        stroke: var(--Secondary-color);
+  }
+}
+
+.project-body {
+  transform: translateY(100%);
+  bottom: 0;
+  left: 0;
+  height: auto;
+  width: 100%;
+  text-align: left;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  border-radius: 0px;
+  backdrop-filter: blur(5px);
+  background: var(--Secondary-color);
+  overflow: hidden;
+  transition: all 0.2s ease, backdrop-filter 0.2s ease, border-color 0.2s ease;
+  box-shadow: black 0px 0px 50px 0px;
+}
+
+.like-section{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.project-tag {
+  color: var(--Primary-color);
+  background-color: transparent;
+  padding: 1px 5px;
+  border-radius: 99px;
+  align-self: flex-start;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.project-tag--sketching { border: 1px solid var(--accent-sketching); }
+.project-tag--designing { border: 1px solid var(--accent-designing); }
+.project-tag--web { border: 1px solid var(--accent-web); }
+.project-tag--video-editing { border: 1px solid var(--accent-video-editing); }
+
+.project-likes {
+  display: flex;
+  color: var(--Secondary-color);
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.heart-icon {
+  scale: 1.8;
+  color: #ff2731;
+  margin-left: 0.2rem;
+}
+
+.project-title {
+  font-family: var(--font-display);
+  color: var(--Primary-color);
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin: 0;
+  line-height: 1.25;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.project-blurb {
+  font-size: 0.9rem;
+  line-height: 1;
+  text-align: left;
+  color: var(--Primary-color);
+  opacity: 0.9;
+  flex: 1;
+}
+
+.project-meta {
+  color: var(--Primary-color);
+  margin-top: 0.25rem;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+.project-skill{
+  opacity: 0.75;
+  display: inline;
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  font-weight: 600;
+  margin-left: 10px;
+  margin-top: 1rem;
+  align-self: flex-start;
+}
+
+
+
+/* ---------------------------------------------------------
+   Empty state
+   --------------------------------------------------------- */
+.empty-state {
+  font-size: 0.95rem;
+  color: var(--Primary-color);
+  padding: 2rem 0;
+}
+
+/* ---------------------------------------------------------
+   Responsive
+   --------------------------------------------------------- */
+@media (max-width: 640px) {
+  .projects-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .back-button {
+    margin-top: 0;
+  }
+
+  .projects-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .projects-page * {
+    transition: none !important;
+  }
+}

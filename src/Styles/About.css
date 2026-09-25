@@ -1,0 +1,95 @@
+.about-page {
+
+  --font-display: 'Playfair Display', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
+
+  background-color: var(--Secondary-color);
+  color: var(--Primary-color);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  padding: 2.5rem clamp(1.25rem, 5vw, 4rem) 4rem;
+  box-sizing: border-box;
+}
+
+.about-page *,
+.about-page *::before,
+.about-page *::after {
+  box-sizing: border-box;
+}
+
+
+
+
+
+.about-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 2px solid var(--Primary-color);
+  margin-bottom: 2rem;
+}
+
+.about-heading-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.about-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-graphic-design);
+}
+
+.about-heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 7rem;
+  line-height: 1;
+  letter-spacing: -0.2rem;
+  margin: 0;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  align-self: end;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  padding: 0.5rem 1.15rem;
+  margin-top: 0.4rem;
+  background: transparent;
+  border: 1.5px solid var(--Primary-color);
+  border-radius: 0;
+  color: var(--Primary-color);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: none;
+  transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.back-button:hover {
+  background-color: var(--Primary-color);
+  color: var(--Secondary-color);
+  transform: translateX(-2px);
+}
+
+.back-button:focus-visible {
+  outline: 3px solid var(--accent-software);
+  outline-offset: 2px;
+}
+
+.back-button-arrow {
+  font-size: 1.05rem;
+  transition: transform 0.18s ease;
+}
+
+.back-button:hover .back-button-arrow {
+  transform: translateX(-3px);
+}

@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+*{
+    text-align: center;
+    cursor: none;
+    padding: 0 0;
+    margin: 0 0;
+    box-sizing: border-box;
+}
+:root{
+    --Hero-video: url(public/hero-optimized.mp4);
+    --Primary-color: #151515;
+    --Secondary-color: rgb(237, 245, 245);
+    --accent-color: #93032E;
+}
+html{
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+}
+body{
+    background-color: var(--Secondary-color);
+}
+.DarkMode{
+    --Primary-color: rgb(237, 245, 245);
+    --Secondary-color: #151515;
+    --accent-color: #93032E;
+    --Hero-video: url(url(../public/hero-dark.mp4))
+}
+
+@media (max-width:1162px) {
+    html{
+        font-size: 8px;
+    }
+}
