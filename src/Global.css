@@ -8,7 +8,6 @@
     box-sizing: border-box;
 }
 :root{
-    --Hero-video: url(public/hero-optimized.mp4);
     --Primary-color: #151515;
     --Secondary-color: rgb(237, 245, 245);
     --accent-color: #93032E;
